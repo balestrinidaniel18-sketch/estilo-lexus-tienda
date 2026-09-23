@@ -510,62 +510,7 @@ html,body{overflow-x:hidden;overflow-y:auto!important;height:auto!important;widt
 </div>
 </section>
 <!-- INDIVIDUAL PRODUCT SHOWCASE & TECHNICAL SPECS (FICHA DE PRODUCTO ESTILO NIKE) -->
-<section class="w-full bg-surface-pedestal/60 py-space-2xl mt-space-xl" id="drop-oficial">
-<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop">
-<p class="font-label-badge text-label-badge text-accent-energy-orange uppercase tracking-wider mb-space-md">Producto Destacado</p>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
-<!-- LEFT: FEATURED PRODUCT IMAGE -->
-<div class="lg:col-span-7 space-y-space-md">
-<div class="relative w-full aspect-square sm:aspect-[4/3] rounded-DEFAULT overflow-hidden bg-surface-pedestal">
-<img alt="Producto destacado" class="w-full h-full object-contain object-center transition-all duration-300 p-space-lg" id="featured-product-img" src="">
-</div>
-</div>
-<!-- RIGHT: BUY BOX -->
-<div class="lg:col-span-5 lg:sticky lg:top-[120px] space-y-space-md bg-surface-canvas p-space-lg md:p-space-xl rounded-DEFAULT shadow-sm">
-<div class="space-y-1">
-<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider" id="featured-product-line"></span>
-<h2 class="font-headline-xl text-headline-xl text-primary tracking-tight" id="featured-product-name"></h2>
-<p class="font-body-md text-body-md text-text-muted" id="featured-product-cat"></p>
-</div>
-<div class="py-space-xs">
-<div class="flex items-baseline gap-space-sm">
-<span class="font-display-hero-mobile text-display-hero-mobile font-headline-lg text-primary" id="featured-product-price"></span>
-</div>
-</div>
-<!-- Size Selector -->
-<div class="space-y-space-xs pt-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-label-button text-label-button text-primary">Tallas disponibles</span>
-</div>
-<div class="grid grid-cols-5 gap-2" id="featured-product-sizes"></div>
-</div>
-<!-- CTAs -->
-<div class="space-y-space-sm pt-space-md">
-<button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-button text-label-button hover:bg-primary-container transition-colors flex items-center justify-center gap-2" id="add-to-bag-btn">
-<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
-              Agregar a la Bolsa
-            </button>
-<a class="w-full h-12 rounded-full bg-[#25D366] text-white font-label-button text-label-button hover:opacity-90 transition-colors flex items-center justify-center gap-2" href="#" id="featured-whatsapp-link">
-<span class="material-symbols-outlined text-[20px]">chat</span>
-              Comprar por WhatsApp
-            </a>
-</div>
-<!-- Product Feature Details Accordions -->
-<div class="pt-space-md space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
-<details class="group py-2 border-b border-border-subtle cursor-pointer">
-<summary class="flex items-center justify-between font-label-button text-label-button text-primary list-none">
-<span class="">Envíos y Entrega</span>
-<span class="material-symbols-outlined text-[18px] group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="pt-2 text-text-muted space-y-1">
-<p class="">Coordinación de entrega dentro de Venezuela. Consulta tiempos y costo de envío a tu ciudad por WhatsApp.</p>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <!-- CLEAN NEWSLETTER & MEMBER BENEFITS BANNER (NIKE COMMUNITY STYLE) -->
 <section class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop py-space-2xl">
 
@@ -957,18 +902,7 @@ html,body{overflow-x:hidden;overflow-y:auto!important;height:auto!important;widt
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
   // Featured product box
-  function renderFeatured(){
-    const f = PRODUCTS[3];
-    document.getElementById('featured-product-img').src = f.img;
-    document.getElementById('featured-product-line').textContent = f.cat + ' — ' + f.line;
-    document.getElementById('featured-product-name').textContent = f.name;
-    document.getElementById('featured-product-cat').textContent = 'Calzado ' + f.cat;
-    document.getElementById('featured-product-price').textContent = money(f.price);
-    const sizesWrap = document.getElementById('featured-product-sizes');
-    sizesWrap.innerHTML = f.sizes.split('-').map(s => '<button class="h-10 rounded bg-surface-pedestal font-label-button text-label-button text-primary hover:bg-surface-container transition-colors">' + s + '</button>').join('');
-    const waLink = document.getElementById('featured-whatsapp-link');
-    waLink.addEventListener('click', (e) => { e.preventDefault(); openBuyModal(f); });
-  }
+  
 
   // ===== Buy modal: pick size + choose seller (Concheta / Daniel) =====
   const SELLERS = {
@@ -1345,7 +1279,7 @@ html,body{overflow-x:hidden;overflow-y:auto!important;height:auto!important;widt
     document.body.style.overflow = 'hidden';
     if (!loyaltyQrGenerated && typeof QRCode !== 'undefined') {
       const loyaltyMsg = 'Hola, quiero registrar mi compra para mi tarjeta de fidelidad 🙌';
-      const loyaltyLink = 'https://wa.me/584142373881?text=' + encodeURIComponent(loyaltyMsg);
+      const loyaltyLink = 'https://wa.me/584142806431?text=' + encodeURIComponent(loyaltyMsg);
       new QRCode(document.getElementById('loyalty-qr-canvas'), {
         text: loyaltyLink,
         width: 180,
@@ -1474,8 +1408,6 @@ html,body{overflow-x:hidden;overflow-y:auto!important;height:auto!important;widt
     openCartModal();
   });
 
-  const addToBagBtn = document.getElementById('add-to-bag-btn');
-  if (addToBagBtn) addToBagBtn.addEventListener('click', () => openQuickAddModal(PRODUCTS[3]));
   document.getElementById('catalog-grid').addEventListener('click', (e) => {
     const cartBtn = e.target.closest('.add-to-cart-btn');
     if (cartBtn) {
@@ -1485,7 +1417,6 @@ html,body{overflow-x:hidden;overflow-y:auto!important;height:auto!important;widt
     }
   });
 
-  renderFeatured();
   render();
 })();
 </script>
